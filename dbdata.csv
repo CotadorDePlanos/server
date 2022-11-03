@@ -1,0 +1,41 @@
+OPERADORA,CIDADE,UF,TIPO DE PRODUTO,NOME DO PRODUTO,ACOMODAÇÃO,QTD. MÍN. PESSOAS,TAG,FAIXA ETÁRIA,PRICE
+Hapvida,Ribeirão Preto,SP,PF,Plano HP IND RP,Enfermaria,1,PRICE,18,100
+Hapvida,Ribeirão Preto,SP,PF,Plano HP IND RP,Enfermaria,1,PRICE,23,110
+Hapvida,Ribeirão Preto,SP,PF,Plano HP IND RP,Enfermaria,1,PRICE,28,120
+Hapvida,Ribeirão Preto,SP,PF,Plano HP IND RP,Enfermaria,1,PRICE,33,130
+Hapvida,Ribeirão Preto,SP,PF,Plano HP IND RP,Enfermaria,1,PRICE,38,140
+Hapvida,Ribeirão Preto,SP,PF,Plano HP IND RP,Enfermaria,1,PRICE,43,150
+Hapvida,Ribeirão Preto,SP,PF,Plano HP IND RP,Enfermaria,1,PRICE,48,160
+Hapvida,Ribeirão Preto,SP,PF,Plano HP IND RP,Enfermaria,1,PRICE,53,170
+Hapvida,Ribeirão Preto,SP,PF,Plano HP IND RP,Enfermaria,1,PRICE,58,180
+Hapvida,Ribeirão Preto,SP,PF,Plano HP IND RP,Enfermaria,1,PRICE,59,190
+Bradesco,Cuiabá,MT,PJ,Nacional TOP,Enfermaria,3,NATIONAL,18,200
+Bradesco,Cuiabá,MT,PJ,Nacional TOP,Enfermaria,3,NATIONAL,23,210
+Bradesco,Cuiabá,MT,PJ,Nacional TOP,Enfermaria,3,NATIONAL,28,220
+Bradesco,Cuiabá,MT,PJ,Nacional TOP,Enfermaria,3,NATIONAL,33,230
+Bradesco,Cuiabá,MT,PJ,Nacional TOP,Enfermaria,3,NATIONAL,38,240
+Bradesco,Cuiabá,MT,PJ,Nacional TOP,Enfermaria,3,NATIONAL,43,250
+Bradesco,Cuiabá,MT,PJ,Nacional TOP,Enfermaria,3,NATIONAL,48,260
+Bradesco,Cuiabá,MT,PJ,Nacional TOP,Enfermaria,3,NATIONAL,53,270
+Bradesco,Cuiabá,MT,PJ,Nacional TOP,Enfermaria,3,NATIONAL,58,280
+Bradesco,Cuiabá,MT,PJ,Nacional TOP,Enfermaria,3,NATIONAL,59,290
+SulAmérica,Recife,PE,PJ,Direto Azul,Enfermaria,2,REGIONAL,18,300
+SulAmérica,Recife,PE,PJ,Direto Azul,Enfermaria,2,REGIONAL,23,300
+SulAmérica,Recife,PE,PJ,Direto Azul,Enfermaria,2,REGIONAL,28,300
+SulAmérica,Recife,PE,PJ,Direto Azul,Enfermaria,2,REGIONAL,33,300
+SulAmérica,Recife,PE,PJ,Direto Azul,Enfermaria,2,REGIONAL,38,300
+SulAmérica,Recife,PE,PJ,Direto Azul,Enfermaria,2,REGIONAL,43,300
+SulAmérica,Recife,PE,PJ,Direto Azul,Enfermaria,2,REGIONAL,48,300
+SulAmérica,Recife,PE,PJ,Direto Azul,Enfermaria,2,REGIONAL,53,300
+SulAmérica,Recife,PE,PJ,Direto Azul,Enfermaria,2,REGIONAL,58,300
+SulAmérica,Recife,PE,PJ,Direto Azul,Enfermaria,2,REGIONAL,59,300
+SulAmérica,Recife,PE,PJ,Direto Azul,Apartamento,2,REGIONAL,18,500
+SulAmérica,Recife,PE,PJ,Direto Azul,Apartamento,2,REGIONAL,23,600
+SulAmérica,Recife,PE,PJ,Direto Azul,Apartamento,2,REGIONAL,28,700
+SulAmérica,Recife,PE,PJ,Direto Azul,Apartamento,2,REGIONAL,33,800
+SulAmérica,Recife,PE,PJ,Direto Azul,Apartamento,2,REGIONAL,38,900
+SulAmérica,Recife,PE,PJ,Direto Azul,Apartamento,2,REGIONAL,43,1000
+SulAmérica,Recife,PE,PJ,Direto Azul,Apartamento,2,REGIONAL,48,1100
+SulAmérica,Recife,PE,PJ,Direto Azul,Apartamento,2,REGIONAL,53,1200
+SulAmérica,Recife,PE,PJ,Direto Azul,Apartamento,2,REGIONAL,58,1300
+SulAmérica,Recife,PE,PJ,Direto Azul,Apartamento,2,REGIONAL,59,1400
