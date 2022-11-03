@@ -1,6 +1,5 @@
-var express = require('express');
+var router = require('express').Router();
 var axios  = require('axios');
-var router = express.Router();
 
 router.post('/make-webhook', function(req, res, next) {
   // console.log(req.body)

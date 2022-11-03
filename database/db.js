@@ -1,14 +1,5 @@
-const Pool = require('pg').Pool
 const axios = require('axios')
-
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'qualificador',
-  password: '1234',
-  port: 5432,
-})
-
+const pool = require('./_database')
 
 
 const getPlans = (req, res) => {
@@ -61,7 +52,7 @@ const getUserById = (req, res) => {
     })
 }
 
-const createUser = (req, res) => {
+const createAdmin = (req, res) => {
     const { name, email, password } = req.body
   
     pool.query('INSERT INTO admin (name, email, password) VALUES ($1, $2, $3) RETURNING *', [name, email, password], (error, results) => {
@@ -105,7 +96,7 @@ const deleteUser = (req, res) => {
 module.exports = {
     getPlans,
     getUserById,
-    createUser,
+    createAdmin,
     updateUser,
     deleteUser,
   }
