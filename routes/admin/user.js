@@ -3,9 +3,9 @@ const user = require('../../database/user');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-router.post('/create', (req,res) => {
+router.post('/register', (req,res) => {
     const { name, email, password } = req.body
-   
+    console.log(name,email,password)
     bcrypt.hash(password, 10)
     .then((hashedPassword) => {
         // save the new user
@@ -18,8 +18,8 @@ router.post('/create', (req,res) => {
             })
             // catch error if the new user wasn't added successfully to the database
             .catch((error) => {
-                res.status(500).send({
-                    message: "Error creating user",
+                res.status(409).send({
+                    message: "Error creating user, email already in use",
                     error,
             });
         });
@@ -48,17 +48,16 @@ router.post("/login", (req, res) => {
             // check if password matches
             if(!passwordCheck) {
                 return res.status(400).send({
-                    message: "Passwords does not match",
-                    error,
+                    message: "Credentials does not match",
             });
             }
 
             // create JWT token
             const token = jwt.sign(
-                { user_id: user.id, email },
+                { email },
                 "RANDOM-TOKEN",
                 {
-                expiresIn: "2h",
+                expiresIn: "24h",
                 }
             );
 
@@ -69,18 +68,11 @@ router.post("/login", (req, res) => {
                 token,
             });
         })
-        // catch error if password do not match
-        .catch((error) => {
-            res.status(400).send({
-                message: "Something went wrong",
-                error,
-            });
-        });
     })
     // catch error if email does not exist
     .catch((error) => {
-        res.status(404).send({
-            message: "Email not found",
+        res.status(400).send({
+            message: "Credentials does not match",
             error,
         });
     });

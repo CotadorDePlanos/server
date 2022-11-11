@@ -1,4 +1,3 @@
-const colors = require('colors');
 const { Pool } = require('pg');
 
 const [dbName, maxCon] =
@@ -21,13 +20,4 @@ const pool = new Pool(config)
     console.error('idle client error', err.message, err.stack);
   });
 
-async function initDb() {
-  await pool.query('SELECT $1::int AS number', [1]);
-
-  console.log(colors.grey(
-    `Postgres is online using ${client.database} as user ${client.user}\n` +
-    `and is listening on ${client.host}`));
-}
-
 exports.pool = pool;
-exports.initDb = initDb;

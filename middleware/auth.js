@@ -14,6 +14,7 @@ module.exports = async (req, res, next) => {
         next();
         
     } catch (error) {
+        res.clearCookie("TOKEN");
         res.status(401).json({
         error: "Not Authorized!",
         });

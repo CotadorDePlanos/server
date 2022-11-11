@@ -5,9 +5,10 @@ var cors = require('cors');
 
 var apiRouter = require('./routes/qualifier/api');
 var viacepRouter = require('./routes/qualifier/viacep');
-var dbRouter = require('./routes/db');
+var planRouter = require('./routes/qualifier/plan');
 var userRouter = require('./routes/admin/user');
 var operatorRouter = require('./routes/admin/operator');
+var messageRouter = require('./routes/admin/message');
 
 var app = express();
 
@@ -31,9 +32,10 @@ app.use(function(req, res, next) {
 // router setup
 app.use('/api', apiRouter);
 app.use('/viacep', viacepRouter);
-app.use('/db', dbRouter);
 app.use('/user', userRouter);
 app.use('/operator', operatorRouter);
+app.use('/message', messageRouter);
+app.use('/plan', planRouter);
 
 
 // error handler

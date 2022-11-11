@@ -38,20 +38,22 @@ router.post('/make-webhook', function(req, res, next) {
 
 
 router.post('/zapi-send', function(req,res) {
-  var message = "texto texto texto texto texto texto texto Plano de saude: " + req.body.message
+  const { phone, message } = req.body
 
   axios.post('https://api.z-api.io/instances/3B3847FF8D6A20664DB6928AC4BCDF37/token/E1A47751C173CA2942BE2A7F/send-messages', {
-  phone: "5511988291146",
+  phone: phone,
   message: message
   })
   .then(function (response) {
     console.log(response);
+    res.send('zapi req sent')
   })
   .catch(function (error) {
     console.log(error);
+    res.send('zapi req deny')
+
   });
 
-  res.send('zapi req sent')
 })
 
 module.exports = router;
