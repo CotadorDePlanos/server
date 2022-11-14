@@ -3,12 +3,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
-var apiRouter = require('./routes/qualifier/api');
-var viacepRouter = require('./routes/qualifier/viacep');
-var planRouter = require('./routes/qualifier/plan');
-var userRouter = require('./routes/admin/user');
-var operatorRouter = require('./routes/admin/operator');
-var messageRouter = require('./routes/admin/message');
+var apiRouter = require('./routes/api');
+var viacepRouter = require('./routes/viacep');
+var planRouter = require('./routes/plan');
+var userRouter = require('./routes/user');
+var operatorRouter = require('./routes/operator');
+var messageRouter = require('./routes/message');
 
 var app = express();
 

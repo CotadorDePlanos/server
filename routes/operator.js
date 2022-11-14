@@ -1,6 +1,6 @@
 var router = require('express').Router();
-const auth = require('../../middleware/auth')
-const operator = require('../../database/operator')
+const auth = require('../middleware/auth')
+const operator = require('../database/operator')
 
 router.post('/create', auth,  (req,res) => {
     const { name } = req.body

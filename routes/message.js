@@ -1,6 +1,6 @@
 var router = require('express').Router();
-const auth = require('../../middleware/auth')
-const message = require('../../database/message')
+const auth = require('../middleware/auth')
+const message = require('../database/message')
 
 router.post('/create', auth,  (req,res) => {
     const { data, type } = req.body

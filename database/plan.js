@@ -1,6 +1,6 @@
 const pool = require('./_database').pool
 
-const list = async (city,type,minPeople,ageGroup) => {
+const quote = async (city,type,minPeople,ageGroup) => {
     if(type === 'PF'){
         min_people = 1
     } 
@@ -34,6 +34,41 @@ const list = async (city,type,minPeople,ageGroup) => {
     return res.rows
 }
 
+const list = async () => {
+    const res = await pool.query('SELECT * FROM plans')
+    return res.rows
+}
+
+const inactive = async (planId,status) => {
+    const res = await pool.query('UPDATE plans SET active = $2 WHERE id = $1',[planId,status])
+    return res.rows[0]
+}
+
+const create = async (string) => {
+    const res = await pool.query(
+    `INSERT INTO plans (
+        operator_id,
+        city,
+        state,
+        type,
+        name,
+        accommodation,
+        min_people,
+        tag
+    ) 
+    VALUES ${string} RETURNING *`)
+    return res.rows
+}
+
+const createVariant = async (string) => {
+    const res = await pool.query(`INSERT INTO plan_variant (plan_id, age_group, price) VALUES ${string} RETURNING *`)
+    return res.rows
+}
+
 module.exports = {
     list,
+    quote,
+    inactive,
+    create,
+    createVariant
 }
