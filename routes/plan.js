@@ -22,12 +22,30 @@ router.get('/list', auth, (req,res) => {
 
         
 router.post('/quote',  (req,res) => {
-    const { city,type,minPeople,ageGroup } = req.body
-    plan.list(city,type,minPeople,ageGroup)
+    const { city,type,peoples } = req.body    
+    const counts = {}
+    const totals = {}
+
+    for (const people of peoples) {
+      counts[people] = counts[people] ? counts[people] + 1 : 1;
+    }
+  
+    plan.quote(city,type,peoples.length,[...new Set(peoples)])
     .then((result) => {
+        result.forEach( (element) => {
+            totals[element.age_group] = counts[element.age_group] * element.price
+        })
+        const values = Object.values(totals);
+
+        const sum = values.reduce((accumulator, value) => {
+            return accumulator + value;
+        }, 0);  
+        totals['total'] = sum
+
         res.status(201).send({
             message: `found plans`,
-            result
+            result,
+            totals
         });
     })
     .catch((error) => {
@@ -37,6 +55,19 @@ router.post('/quote',  (req,res) => {
         });
     });
 });
+
+router.post('/normalize-age', (req,res) => {
+    const { peoples } = req.body
+    const counts = [18,23,28,33,38,43,48,53,58,59];
+    
+    const result = peoples.map(element => {
+        let min = Math.min(...counts.filter( num => num >= element ));
+        return min
+    })
+    res.status(200).send({
+        result
+    });
+})
 
 router.post('/inactive/:planId', auth, (req,res) => {
     plan.inactive(req.params.planId,req.body.status)

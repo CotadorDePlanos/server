@@ -1,8 +1,8 @@
 const pool = require('./_database').pool
 
-const quote = async (city,type,minPeople,ageGroup) => {
+const quote = async (city,type,peoples,ageGroup) => {
     if(type === 'PF'){
-        min_people = 1
+        peoples = 1
     } 
     const res = await pool.query(
         `
@@ -29,7 +29,7 @@ const quote = async (city,type,minPeople,ageGroup) => {
         AND mo.operator_id = p.operator_id
         AND m.id = mo.message_id
         `
-      , [city, type, minPeople, ageGroup])
+      , [city, type, peoples, ageGroup])
 
     return res.rows
 }
