@@ -1,6 +1,6 @@
 const pool = require('./_database').pool
 
-const quote = async (city,type,peoples,ageGroup) => {
+const quote = async (city,type,peoples,ageGroup,tag = 'PRICE') => {
     if(type === 'PF'){
         peoples = 1
     } 
@@ -28,8 +28,13 @@ const quote = async (city,type,peoples,ageGroup) => {
         AND o.active = true
         AND mo.operator_id = p.operator_id
         AND m.id = mo.message_id
+        ORDER BY
+        CASE
+          WHEN p.tag=$5 THEN 1
+          ELSE 2
+        END,name;
         `
-      , [city, type, peoples, ageGroup])
+      , [city, type, peoples, ageGroup,tag])
 
     return res.rows
 }

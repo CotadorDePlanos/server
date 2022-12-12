@@ -73,7 +73,6 @@ router.post('/assign', auth, (req,res) => {
 });
 
 router.post('/unsign', auth, (req,res) => {
-    console.log(req.body)
     const { messageId, operatorId } = req.body
     message.unsignToOperator(messageId, operatorId)
     .then((result) => {

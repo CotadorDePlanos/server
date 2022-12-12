@@ -22,7 +22,7 @@ router.get('/list', auth, (req,res) => {
 
         
 router.post('/quote',  (req,res) => {
-    const { city,type,peoples } = req.body    
+    const { city,type,peoples,tag } = req.body    
     const counts = {}
     const totals = {}
 
@@ -30,7 +30,7 @@ router.post('/quote',  (req,res) => {
       counts[people] = counts[people] ? counts[people] + 1 : 1;
     }
   
-    plan.quote(city,type,peoples.length,[...new Set(peoples)])
+    plan.quote(city,type,peoples.length,[...new Set(peoples)],tag)
     .then((result) => {
         result.forEach( (element) => {
             totals[element.age_group] = counts[element.age_group] * element.price
