@@ -1,3 +1,39 @@
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users(
+    id INT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR NOT NULL,
+    email VARCHAR NOT NULL UNIQUE,
+	password VARCHAR NOT NULL,
+    PRIMARY KEY (id)
+); 
+
+DROP TABLE IF EXISTS messages;
+CREATE TABLE messages(
+    id INT GENERATED ALWAYS AS IDENTITY,
+    message VARCHAR NOT NULL,
+    type VARCHAR NOT NULL,
+    PRIMARY KEY (id)
+); 
+
+DROP TABLE IF EXISTS operators;
+CREATE TABLE operators(
+    id INT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR NOT NULL UNIQUE,
+    active BOOLEAN DEFAULT true,
+    PRIMARY KEY (id)
+); 
+
+DROP TABLE IF EXISTS message_operator;
+CREATE TABLE message_operator(
+    id serial,
+    message_id int NOT NULL,
+    operator_id int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (message_id) REFERENCES messages(id) ON DELETE CASCADE,
+    FOREIGN KEY (operator_id) REFERENCES operators(id) ON DELETE CASCADE
+); 
+
 DROP TABLE IF EXISTS plans;
 CREATE TABLE plans(
     id INT GENERATED ALWAYS AS IDENTITY,
@@ -23,39 +59,3 @@ CREATE TABLE plan_variant(
     PRIMARY KEY(id)
 
 ); 
-
-DROP TABLE IF EXISTS users;
-CREATE TABLE users(
-    id INT GENERATED ALWAYS AS IDENTITY,
-    name VARCHAR NOT NULL,
-    email VARCHAR NOT NULL UNIQUE,
-	password VARCHAR NOT NULL,
-    PRIMARY KEY (id)
-); 
-
-DROP TABLE IF EXISTS message_operator;
-CREATE TABLE message_operator(
-    id serial,
-    message_id int NOT NULL,
-    operator_id int NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (message_id) REFERENCES messages(id) ON DELETE CASCADE,
-    FOREIGN KEY (operator_id) REFERENCES operators(id) ON DELETE CASCADE
-); 
-
-DROP TABLE IF EXISTS messages;
-CREATE TABLE messages(
-    id INT GENERATED ALWAYS AS IDENTITY,
-    message VARCHAR NOT NULL,
-    type VARCHAR NOT NULL,
-    PRIMARY KEY (id)
-); 
-
-DROP TABLE IF EXISTS operators;
-CREATE TABLE operators(
-    id INT GENERATED ALWAYS AS IDENTITY,
-    name VARCHAR NOT NULL UNIQUE,
-    active BOOLEAN DEFAULT true
-    PRIMARY KEY (id)
-); 
-

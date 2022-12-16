@@ -1,17 +1,13 @@
 const { Pool } = require('pg');
-
-const [dbName, maxCon] =
-  process.env.DOLPHIN_TEST ?
-    ['qualificador', 1] :
-    ['qualificador', 4];
+require('dotenv').config()
 
 const config = {
-    user: 'postgres',
-    host: 'localhost',
-    password: '1234',
-    port: 5432,
-    database: dbName,
-    max: maxCon,
+    user: process.env.PGUSER,
+    host: process.env.PGHOST,
+    password: process.env.PGPASSWORD,
+    port: process.env.PGPORT,
+    database: process.env.PGDATABASE,
+    max: 4,
     idleTimeoutMillis: 30000,
 }
 

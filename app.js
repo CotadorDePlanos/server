@@ -3,7 +3,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
-var apiRouter = require('./routes/api');
+var whatsappRouter = require('./routes/whatsapp');
 var viacepRouter = require('./routes/viacep');
 var planRouter = require('./routes/plan');
 var userRouter = require('./routes/user');
@@ -30,12 +30,12 @@ app.use(function(req, res, next) {
 })
 
 // router setup
-app.use('/api', apiRouter);
-app.use('/viacep', viacepRouter);
-app.use('/user', userRouter);
-app.use('/operator', operatorRouter);
-app.use('/message', messageRouter);
-app.use('/plan', planRouter);
+app.use('/api/whatsapp', whatsappRouter);
+app.use('/api/viacep', viacepRouter);
+app.use('/api/user', userRouter);
+app.use('/api/operator', operatorRouter);
+app.use('/api/message', messageRouter);
+app.use('/api/plan', planRouter);
 
 
 // error handler
@@ -48,7 +48,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 });
 
-// start the server in the port 3000 !
-app.listen(5000, function () {
-  console.log('Example app listening on port 5000.');
+// start the server!
+const port = process.env.PORT || 5000;
+app.listen(port, function () {
+  console.log(`App listening on port ${port}.`);
 });

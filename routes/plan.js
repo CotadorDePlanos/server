@@ -86,13 +86,14 @@ router.post('/inactive/:planId', auth, (req,res) => {
 
 router.post('/create', auth, (req,res) => {
     const { plans } = req.body
+    console.log('plans',plans)
     let string = ''
     plans.forEach( (e,i) => {
         let concat = `(${e.OPERATOR_ID},'${e.CITY}','${e.STATE}','${e.TYPE}','${e.NAME}','${e.ACCOMMODATION}',${e.MIN_PEOPLE},'${e.TAG}')`
         if(plans.length -1 !== i){ concat += ',' }
         string += concat
     });
-
+    console.log('plan create',string)
     plan.create(string)
     .then((result) => {
         let string = ''
@@ -112,6 +113,7 @@ router.post('/create', auth, (req,res) => {
             if(plans.length -1 !== i){ concat += ',' }
             string += concat
         })
+        console.log('plan variant create',string)
 
         plan.createVariant(string)
         .then(result =>{
@@ -126,12 +128,12 @@ router.post('/create', auth, (req,res) => {
             });
         })
     })
-    .catch((error) => {
-        res.status(409).send({
-            message: "Error updating plan",
-            error,
-        });
-    });
+    // .catch((error) => {
+    //     res.status(409).send({
+    //         message: "Error updating plan",
+    //         error,
+    //     });
+    // });
 });
 
 module.exports = router;
