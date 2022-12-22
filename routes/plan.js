@@ -34,15 +34,21 @@ router.post('/quote',  (req,res) => {
     plan.quote(city,type,peoples.length,[...new Set(peoples)],tag)
     .then((result) => {
         result.forEach( (element) => {
-            const { age_group,price,id } = element
+            const { age_group,price,id,accommodation,name,operator_name } = element
             let sum = 0
-            // sum = counts[age_group] * price 
-            sum = price
-            totals[id] = {...totals[id], [age_group]: price};
+            sum = counts[age_group] * price 
+            totals[id] = {...totals[id],
+                [age_group]: price,
+                accommodation: accommodation,
+                name:name,
+                operator_name:operator_name
+
+            };
             if (!totals[id]['total']) {
                 totals[id]['total'] = 0;
             }
             totals[id]['total'] += sum
+         
         })
 
         res.status(201).send({
