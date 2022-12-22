@@ -36,7 +36,8 @@ router.post('/quote',  (req,res) => {
         result.forEach( (element) => {
             const { age_group,price,id } = element
             let sum = 0
-            sum = counts[age_group] * price
+            // sum = counts[age_group] * price 
+            sum = price
             totals[id] = {...totals[id], [age_group]: price};
             if (!totals[id]['total']) {
                 totals[id]['total'] = 0;
