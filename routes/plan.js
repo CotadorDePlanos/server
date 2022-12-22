@@ -1,4 +1,5 @@
 var router = require('express').Router();
+const { types } = require('pg');
 const plan = require('../database/plan');
 const auth = require('../middleware/auth')
 
@@ -29,18 +30,19 @@ router.post('/quote',  (req,res) => {
     for (const people of peoples) {
       counts[people] = counts[people] ? counts[people] + 1 : 1;
     }
-  
+
     plan.quote(city,type,peoples.length,[...new Set(peoples)],tag)
     .then((result) => {
         result.forEach( (element) => {
-            totals[element.age_group] = counts[element.age_group] * element.price
+            const { age_group,price,id } = element
+            let sum = 0
+            sum = counts[age_group] * price
+            totals[id] = {...totals[id], [age_group]: price};
+            if (!totals[id]['total']) {
+                totals[id]['total'] = 0;
+            }
+            totals[id]['total'] += sum
         })
-        const values = Object.values(totals);
-
-        const sum = values.reduce((accumulator, value) => {
-            return accumulator + value;
-        }, 0);  
-        totals['total'] = sum
 
         res.status(201).send({
             message: `found plans`,
